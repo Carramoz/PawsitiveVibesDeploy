@@ -44,7 +44,7 @@ btnregistrame.addEventListener("click", (function (event) {
             if (img.checked){
                 imgSelec = img;
             }});
-        let usuario = {"nombre":nombre.value, "numtel":numtel.value, "email": email.value, "contraseña":contraseña.value, "imgPerfil": imgSelec.id};
+        let usuario = {"nombre":`${nombre.value}`, "numtel":`${numtel.value}`, "email":`${email.value}`, "contraseña":`${contraseña.value}`, "imgPerfil":`${imgSelec.id}` };
         let usuarios = [];
         let usuarioRepetido;
         if(window.localStorage.getItem("usuarios") != null){
@@ -72,15 +72,15 @@ btnregistrame.addEventListener("click", (function (event) {
             {
 		     	fetch("https://pawsitivevibesecommerce.onrender.com/api/usuarios/", {
 				  method: "POST",
-				  body: JSON.parse(usuario),
+				  body: JSON.stringify(usuario),
 				  headers: {"Content-type": "application/json; charset=UTF-8"}
 				})
 				.then(response => response.json()) 
-				.then(json => console.log(json),
+				.then(json => (console.log(json),
 						Swal.fire(
 						          'Éxito',
 						          'Te registraste con éxito',
-						          'success'))
+						          'success')))
 				.catch(Swal.fire({
 							       icon: 'error',
 							       title: 'Oops...',
