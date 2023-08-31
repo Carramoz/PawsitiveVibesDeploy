@@ -44,7 +44,7 @@ btnregistrame.addEventListener("click", (function (event) {
             if (img.checked){
                 imgSelec = img;
             }});
-        let usuario = {"nombre":`${nombre.value}`, "numtel":`${numtel.value}`, "email":`${email.value}`, "contraseña":`${contraseña.value}`, "imgPerfil":`${imgSelec.id}` };
+        let usuario = {"nombre":`${nombre.value}`, "telefono":`${numtel.value}`, "correo":`${email.value}`, "contraseña":`${contraseña.value}`, "imagen":`${imgSelec.id}` };
         let usuarios = [];
         let usuarioRepetido;
         if(window.localStorage.getItem("usuarios") != null){
