@@ -9,10 +9,6 @@ const btnregistrame = document.getElementById("btnregistrame");
 const btnTerminos = document.getElementById("btnTerminos");
 const imgPerfil = document.querySelectorAll('input[type=radio]');
 
-let promesa = fetch("https://pawsitivevibesecommerce.onrender.com/api/usuarios/", {
-    method: "POST"
-});
-
 //Para que al cargar la imagen no exista un boton seleccionado de forma predeterminada
 imgPerfil.forEach(radio => {
     radio.checked = false;
@@ -74,32 +70,26 @@ btnregistrame.addEventListener("click", (function (event) {
             //Agrega usuario registrado
             if(!usuarioRepetido)
             {
-                usuarios.push(usuario);
-                Swal.fire(
-                    'Éxito',
-                    'Te registraste con éxito',
-                    'success'
-                );
+		     	fetch("https://pawsitivevibesecommerce.onrender.com/api/usuarios/", {
+				  method: "POST",
+				  body: JSON.stringify(usuario),
+				  headers: {"Content-type": "application/json; charset=UTF-8"}
+				})
+				.then(response => response.json()) 
+				.then(Swal.fire(
+						          'Éxito',
+						          'Te registraste con éxito',
+						          'success'))
+				.catch(Swal.fire({
+							       icon: 'error',
+							       title: 'Oops...',
+							       html: 'Algo salió mal',}));
                 limpiar();
             }
 
 
         window.localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        promesa.then(response => response.text())
-        .then(Swal.fire(
-          'Éxito',
-          'Te registraste con éxito',
-          'success'
-      ))
-        .catch(Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          html: 'Algo salió mal',
-        }));
-
-        
-
-    }
+         }
  
 }))
 
