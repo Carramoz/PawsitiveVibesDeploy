@@ -72,11 +72,12 @@ btnregistrame.addEventListener("click", (function (event) {
             {
 		     	fetch("https://pawsitivevibesecommerce.onrender.com/api/usuarios/", {
 				  method: "POST",
-				  body: JSON.stringify(usuario),
+				  body: JSON.parse(usuario),
 				  headers: {"Content-type": "application/json; charset=UTF-8"}
 				})
 				.then(response => response.json()) 
-				.then(Swal.fire(
+				.then(json => console.log(json),
+						Swal.fire(
 						          'Éxito',
 						          'Te registraste con éxito',
 						          'success'))
