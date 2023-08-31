@@ -85,17 +85,17 @@ btnregistrame.addEventListener("click", (function (event) {
 
 
         window.localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        promesa.then(response => response.text())
-        .then(Swal.fire(
-          'Éxito',
-          'Te registraste con éxito',
-          'success'
-      ))
-        .catch(Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          html: 'Algo salió mal',
-        }));
+    //     promesa.then(response => response.text())
+    //     .then(Swal.fire(
+    //       'Éxito',
+    //       'Te registraste con éxito',
+    //       'success'
+    //   ))
+    //     .catch(Swal.fire({
+    //       icon: 'error',
+    //       title: 'Oops...',
+    //       html: 'Algo salió mal',
+    //     }));
 
         
 
