@@ -44,43 +44,72 @@ btnregistrame.addEventListener("click", (function (event) {
             if (img.checked){
                 imgSelec = img;
             }});
-        let usuario = {"nombre":nombre.value, "numtel":numtel.value, "email": email.value, "contraseña":contraseña.value, "imgPerfil": imgSelec.id};
+        let usuario = {"nombre":nombre.value, "telefono":numtel.value, "correo": email.value, "contrasena":contraseña.value, "imagen": imgSelec.id};
         let usuarios = [];
         let usuarioRepetido;
-        if(window.localStorage.getItem("usuarios") != null){
-            let json = (JSON.parse(window.localStorage.getItem("usuarios")));
 
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+      
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: usuario,
+          redirect: 'follow'
+        };
+        
+        fetch("https://pawsitivevibesecommerce.onrender.com/api/usuarios/", requestOptions)
+          .then(response => response.text())
+          .then(Swal.fire(
+            'Éxito',
+            'Te registraste con éxito',
+            'success'
+        ))
+          .catch(Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: 'Ya hay una cuenta con este correo',
+          }));
+
+          
+        // if(window.localStorage.getItem("usuarios") != null){
+        //     let json = (JSON.parse(window.localStorage.getItem("usuarios")));
+
+          
             //agrega usuarios del localStorage
-            json.forEach(u => {
-                if(usuario.email == u.email){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        html: 'Ya hay una cuenta con este correo',
-                      });
-                    usuarioRepetido = true;
-                }
+        //     json.forEach(u => {
+        //         if(usuario.email == u.email){
+        //             Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Oops...',
+        //                 html: 'Ya hay una cuenta con este correo',
+        //               });
+        //             usuarioRepetido = true;
+        //         }
                 
-                usuarios.push(u);
+        //         usuarios.push(u);
               
-            });
+        //     });
 
-            }
+        //     }
 
-            //Agrega usuario registrado
-            if(!usuarioRepetido)
-            {
-                usuarios.push(usuario);
-                Swal.fire(
-                    'Éxito',
-                    'Te registraste con éxito',
-                    'success'
-                );
-                limpiar();
-            }
+        //     //Agrega usuario registrado
+        //     if(!usuarioRepetido)
+        //     {
+        //         usuarios.push(usuario);
+        //         Swal.fire(
+        //             'Éxito',
+        //             'Te registraste con éxito',
+        //             'success'
+        //         );
+        //         limpiar();
+        //     }
 
 
-        window.localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        // window.localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
     }
  
