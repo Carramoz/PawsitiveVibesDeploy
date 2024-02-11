@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.005s</div>
+<div class="counter">0.003s</div>
 <p>duration</p>
 </div>
 </td>
@@ -198,14 +198,15 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181)
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:44)
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63)
-	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43)
-	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39)
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66)
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.&lt;init&gt;(DatabaseInformationImpl.java:60)
-	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:183)
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:68)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:77)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:53)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:246)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157)
 	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
 	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:335)
 	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
@@ -230,7 +231,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 </thead>
 <tr>
 <td class="failures">contextLoads()</td>
-<td class="failures">0.005s</td>
+<td class="failures">0.003s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -238,21 +239,21 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>19:42:07.030 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-19:42:07.046 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-19:42:07.086 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-19:42:07.098 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests], using SpringBootContextLoader
-19:42:07.103 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: class path resource [com/pawsitivevibes/EcommercePawsitiveVibes/EcommercePawsitiveVibesApplicationTests-context.xml] does not exist
-19:42:07.103 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: class path resource [com/pawsitivevibes/EcommercePawsitiveVibes/EcommercePawsitiveVibesApplicationTestsContext.groovy] does not exist
-19:42:07.104 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-19:42:07.104 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: EcommercePawsitiveVibesApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-19:42:07.157 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]
-19:42:07.238 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\Carra\OneDrive\Documentos\proyectoPawsitivevibes\PawsitiveVibes-Back\EcommercePawsitiveVibes\build\classes\java\main\com\pawsitivevibes\EcommercePawsitiveVibes\EcommercePawsitiveVibesApplication.class]
-19:42:07.240 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplication for test class com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests
-19:42:07.398 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: using defaults.
-19:42:07.399 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-19:42:07.428 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@11ee02f8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4102b1b1, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@61a5b4ae, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3a71c100, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5b69fd74, org.springframework.test.context.support.DirtiesContextTestExecutionListener@f325091, org.springframework.test.context.transaction.TransactionalTestExecutionListener@437e951d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@77b325b3, org.springframework.test.context.event.EventPublishingTestExecutionListener@63a5e46c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7e8e8651, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@49ef32e0, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@271f18d3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6bd51ed8, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@61e3a1fd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@51abf713]
-19:42:07.434 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@65ef722a testClass = EcommercePawsitiveVibesApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5fd9b663 testClass = EcommercePawsitiveVibesApplicationTests, locations = '{}', classes = '{class com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@192d74fb, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@2ece4966, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7be58f16, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@11eadcba, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@f0e995e, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@43599640], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>10:21:33.578 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+10:21:33.586 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+10:21:33.610 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+10:21:33.618 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests], using SpringBootContextLoader
+10:21:33.620 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: class path resource [com/pawsitivevibes/EcommercePawsitiveVibes/EcommercePawsitiveVibesApplicationTests-context.xml] does not exist
+10:21:33.620 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: class path resource [com/pawsitivevibes/EcommercePawsitiveVibes/EcommercePawsitiveVibesApplicationTestsContext.groovy] does not exist
+10:21:33.621 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+10:21:33.621 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: EcommercePawsitiveVibesApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:21:33.649 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]
+10:21:33.689 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\Adonis\OneDrive\Documentos\Programacion\Learning\PawsitiveVibes\PawsitiveVibesDeploy\build\classes\java\main\com\pawsitivevibes\EcommercePawsitiveVibes\EcommercePawsitiveVibesApplication.class]
+10:21:33.689 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplication for test class com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests
+10:21:33.758 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests]: using defaults.
+10:21:33.758 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+10:21:33.771 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@52b56a3e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@fd0e5b6, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4eed46ee, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@36b0fcd5, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4fad94a7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@475835b1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6326d182, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5241cf67, org.springframework.test.context.event.EventPublishingTestExecutionListener@716a7124, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@77192705, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@226642a5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7e809b79, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5cc126dc, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@625e134e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@72bd06ca]
+10:21:33.774 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@53e211ee testClass = EcommercePawsitiveVibesApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@41a90fa8 testClass = EcommercePawsitiveVibesApplicationTests, locations = '{}', classes = '{class com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@25aca718, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@46dffdc3, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@db57326, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1a6c1270, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@61a88b8c, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@156b88f5], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -262,129 +263,129 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::      (v2.7.15-SNAPSHOT)
 
-2023-08-31 19:42:07.877  INFO 11544 --- [    Test worker] .EcommercePawsitiveVibesApplicationTests : Starting EcommercePawsitiveVibesApplicationTests using Java 17.0.7 on LAPTOP-RJSP16KK with PID 11544 (started by Carra in C:\Users\Carra\OneDrive\Documentos\proyectoPawsitivevibes\PawsitiveVibes-Back\EcommercePawsitiveVibes)
-2023-08-31 19:42:07.879  INFO 11544 --- [    Test worker] .EcommercePawsitiveVibesApplicationTests : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-08-31 19:42:08.716  INFO 11544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-08-31 19:42:08.799  INFO 11544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
-2023-08-31 19:42:09.595  INFO 11544 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-08-31 19:42:09.693  INFO 11544 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2023-08-31 19:42:09.932  INFO 11544 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-08-31 19:42:09.978 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@19fbc594
-2023-08-31 19:42:09.978 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@19fbc594
-2023-08-31 19:42:09.979 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -&gt; org.hibernate.type.BooleanType@19fbc594
-2023-08-31 19:42:09.980 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -&gt; org.hibernate.type.NumericBooleanType@2bf2d6eb
-2023-08-31 19:42:09.981 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -&gt; org.hibernate.type.TrueFalseType@34009349
-2023-08-31 19:42:09.982 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -&gt; org.hibernate.type.YesNoType@7f2b584b
-2023-08-31 19:42:09.984 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@149aa7b2
-2023-08-31 19:42:09.984 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@149aa7b2
-2023-08-31 19:42:09.984 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -&gt; org.hibernate.type.ByteType@149aa7b2
-2023-08-31 19:42:09.986 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -&gt; org.hibernate.type.CharacterType@71c0b742
-2023-08-31 19:42:09.986 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -&gt; org.hibernate.type.CharacterType@71c0b742
-2023-08-31 19:42:09.986 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -&gt; org.hibernate.type.CharacterType@71c0b742
-2023-08-31 19:42:09.988 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@19ad75e5
-2023-08-31 19:42:09.988 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@19ad75e5
-2023-08-31 19:42:09.988 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -&gt; org.hibernate.type.ShortType@19ad75e5
-2023-08-31 19:42:09.990 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -&gt; org.hibernate.type.IntegerType@42cf6349
-2023-08-31 19:42:09.990 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -&gt; org.hibernate.type.IntegerType@42cf6349
-2023-08-31 19:42:09.990 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -&gt; org.hibernate.type.IntegerType@42cf6349
-2023-08-31 19:42:09.992 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@4703c998
-2023-08-31 19:42:09.992 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@4703c998
-2023-08-31 19:42:09.992 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -&gt; org.hibernate.type.LongType@4703c998
-2023-08-31 19:42:09.993 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@10ed037a
-2023-08-31 19:42:09.994 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@10ed037a
-2023-08-31 19:42:09.994 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -&gt; org.hibernate.type.FloatType@10ed037a
-2023-08-31 19:42:09.995 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@4245bf68
-2023-08-31 19:42:09.996 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@4245bf68
-2023-08-31 19:42:09.996 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -&gt; org.hibernate.type.DoubleType@4245bf68
-2023-08-31 19:42:09.998 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -&gt; org.hibernate.type.BigDecimalType@7ac5b4c
-2023-08-31 19:42:09.998 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -&gt; org.hibernate.type.BigDecimalType@7ac5b4c
-2023-08-31 19:42:10.000 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -&gt; org.hibernate.type.BigIntegerType@7a3f08b6
-2023-08-31 19:42:10.000 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -&gt; org.hibernate.type.BigIntegerType@7a3f08b6
-2023-08-31 19:42:10.001 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -&gt; org.hibernate.type.StringType@634e1b39
-2023-08-31 19:42:10.002 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -&gt; org.hibernate.type.StringType@634e1b39
-2023-08-31 19:42:10.003 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -&gt; org.hibernate.type.StringNVarcharType@6dae70f9
-2023-08-31 19:42:10.004 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -&gt; org.hibernate.type.CharacterNCharType@62cf6a84
-2023-08-31 19:42:10.005 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -&gt; org.hibernate.type.UrlType@35f7969d
-2023-08-31 19:42:10.005 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -&gt; org.hibernate.type.UrlType@35f7969d
-2023-08-31 19:42:10.007 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -&gt; org.hibernate.type.DurationType@2616b618
-2023-08-31 19:42:10.007 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -&gt; org.hibernate.type.DurationType@2616b618
-2023-08-31 19:42:10.009 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -&gt; org.hibernate.type.InstantType@1b46392c
-2023-08-31 19:42:10.009 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -&gt; org.hibernate.type.InstantType@1b46392c
-2023-08-31 19:42:10.011 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@2becfd4c
-2023-08-31 19:42:10.011 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@2becfd4c
-2023-08-31 19:42:10.018 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -&gt; org.hibernate.type.LocalDateType@79e10fb4
-2023-08-31 19:42:10.018 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -&gt; org.hibernate.type.LocalDateType@79e10fb4
-2023-08-31 19:42:10.020 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -&gt; org.hibernate.type.LocalTimeType@74697863
-2023-08-31 19:42:10.020 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -&gt; org.hibernate.type.LocalTimeType@74697863
-2023-08-31 19:42:10.022 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@626c569b
-2023-08-31 19:42:10.023 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@626c569b
-2023-08-31 19:42:10.025 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -&gt; org.hibernate.type.OffsetTimeType@d36c1c3
-2023-08-31 19:42:10.025 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -&gt; org.hibernate.type.OffsetTimeType@d36c1c3
-2023-08-31 19:42:10.028 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@1304e0d7
-2023-08-31 19:42:10.028 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@1304e0d7
-2023-08-31 19:42:10.031 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -&gt; org.hibernate.type.DateType@23ee2ccf
-2023-08-31 19:42:10.031 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -&gt; org.hibernate.type.DateType@23ee2ccf
-2023-08-31 19:42:10.034 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -&gt; org.hibernate.type.TimeType@7d25913
-2023-08-31 19:42:10.034 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -&gt; org.hibernate.type.TimeType@7d25913
-2023-08-31 19:42:10.036 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -&gt; org.hibernate.type.TimestampType@2b79c8ff
-2023-08-31 19:42:10.036 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -&gt; org.hibernate.type.TimestampType@2b79c8ff
-2023-08-31 19:42:10.037 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -&gt; org.hibernate.type.TimestampType@2b79c8ff
-2023-08-31 19:42:10.040 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -&gt; org.hibernate.type.DbTimestampType@38cfecf3
-2023-08-31 19:42:10.042 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -&gt; org.hibernate.type.CalendarType@35fa450f
-2023-08-31 19:42:10.042 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -&gt; org.hibernate.type.CalendarType@35fa450f
-2023-08-31 19:42:10.042 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -&gt; org.hibernate.type.CalendarType@35fa450f
-2023-08-31 19:42:10.043 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -&gt; org.hibernate.type.CalendarDateType@35d7386b
-2023-08-31 19:42:10.045 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -&gt; org.hibernate.type.CalendarTimeType@1537c744
-2023-08-31 19:42:10.046 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -&gt; org.hibernate.type.LocaleType@4db0ba1c
-2023-08-31 19:42:10.047 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -&gt; org.hibernate.type.LocaleType@4db0ba1c
-2023-08-31 19:42:10.049 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -&gt; org.hibernate.type.CurrencyType@3e9beef2
-2023-08-31 19:42:10.049 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -&gt; org.hibernate.type.CurrencyType@3e9beef2
-2023-08-31 19:42:10.051 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -&gt; org.hibernate.type.TimeZoneType@5ed0b4e3
-2023-08-31 19:42:10.051 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -&gt; org.hibernate.type.TimeZoneType@5ed0b4e3
-2023-08-31 19:42:10.053 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -&gt; org.hibernate.type.ClassType@3dfd7eaa
-2023-08-31 19:42:10.054 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -&gt; org.hibernate.type.ClassType@3dfd7eaa
-2023-08-31 19:42:10.056 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -&gt; org.hibernate.type.UUIDBinaryType@1ec88aa1
-2023-08-31 19:42:10.057 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.UUIDBinaryType@1ec88aa1
-2023-08-31 19:42:10.058 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -&gt; org.hibernate.type.UUIDCharType@6af78a48
-2023-08-31 19:42:10.059 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -&gt; org.hibernate.type.BinaryType@6aff97d6
-2023-08-31 19:42:10.060 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -&gt; org.hibernate.type.BinaryType@6aff97d6
-2023-08-31 19:42:10.060 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -&gt; org.hibernate.type.BinaryType@6aff97d6
-2023-08-31 19:42:10.061 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -&gt; org.hibernate.type.WrapperBinaryType@5463f035
-2023-08-31 19:42:10.062 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -&gt; org.hibernate.type.WrapperBinaryType@5463f035
-2023-08-31 19:42:10.062 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -&gt; org.hibernate.type.WrapperBinaryType@5463f035
-2023-08-31 19:42:10.064 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -&gt; org.hibernate.type.RowVersionType@130a6eb9
-2023-08-31 19:42:10.065 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -&gt; org.hibernate.type.ImageType@66451058
-2023-08-31 19:42:10.066 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -&gt; org.hibernate.type.CharArrayType@6bce4140
-2023-08-31 19:42:10.067 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -&gt; org.hibernate.type.CharArrayType@6bce4140
-2023-08-31 19:42:10.067 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -&gt; org.hibernate.type.CharArrayType@6bce4140
-2023-08-31 19:42:10.068 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -&gt; org.hibernate.type.CharacterArrayType@18cf5c52
-2023-08-31 19:42:10.068 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -&gt; org.hibernate.type.CharacterArrayType@18cf5c52
-2023-08-31 19:42:10.069 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -&gt; org.hibernate.type.CharacterArrayType@18cf5c52
-2023-08-31 19:42:10.069 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -&gt; org.hibernate.type.TextType@426c0486
-2023-08-31 19:42:10.070 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -&gt; org.hibernate.type.NTextType@4d7cac24
-2023-08-31 19:42:10.073 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -&gt; org.hibernate.type.BlobType@2c60ce47
-2023-08-31 19:42:10.073 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -&gt; org.hibernate.type.BlobType@2c60ce47
-2023-08-31 19:42:10.074 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -&gt; org.hibernate.type.MaterializedBlobType@1c74d19
-2023-08-31 19:42:10.076 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -&gt; org.hibernate.type.ClobType@4a1dda83
-2023-08-31 19:42:10.077 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -&gt; org.hibernate.type.ClobType@4a1dda83
-2023-08-31 19:42:10.079 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -&gt; org.hibernate.type.NClobType@14457a95
-2023-08-31 19:42:10.079 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -&gt; org.hibernate.type.NClobType@14457a95
-2023-08-31 19:42:10.080 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -&gt; org.hibernate.type.MaterializedClobType@1abcd059
-2023-08-31 19:42:10.081 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -&gt; org.hibernate.type.MaterializedNClobType@716f94c1
-2023-08-31 19:42:10.083 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -&gt; org.hibernate.type.SerializableType@440ef8d
-2023-08-31 19:42:10.089 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -&gt; org.hibernate.type.ObjectType@46612bfc
-2023-08-31 19:42:10.089 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -&gt; org.hibernate.type.ObjectType@46612bfc
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -&gt; org.hibernate.type.AdaptedImmutableType@15369d73
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -&gt; org.hibernate.type.AdaptedImmutableType@1cde374
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -&gt; org.hibernate.type.AdaptedImmutableType@6818fd48
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -&gt; org.hibernate.type.AdaptedImmutableType@9263c54
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -&gt; org.hibernate.type.AdaptedImmutableType@28daf506
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -&gt; org.hibernate.type.AdaptedImmutableType@4662752a
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -&gt; org.hibernate.type.AdaptedImmutableType@693f2213
-2023-08-31 19:42:10.090 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -&gt; org.hibernate.type.AdaptedImmutableType@514377fc
-2023-08-31 19:42:10.162  INFO 11544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-08-31 19:42:10.176  WARN 11544 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2023-08-31 19:42:10.187  WARN 11544 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2024-02-11 10:21:33.997  INFO 21072 --- [    Test worker] .EcommercePawsitiveVibesApplicationTests : Starting EcommercePawsitiveVibesApplicationTests using Java 17.0.9 on DESKTOP-0V7DFVN with PID 21072 (started by Adonis in C:\Users\Adonis\OneDrive\Documentos\Programacion\Learning\PawsitiveVibes\PawsitiveVibesDeploy)
+2024-02-11 10:21:33.998  INFO 21072 --- [    Test worker] .EcommercePawsitiveVibesApplicationTests : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-02-11 10:21:34.420  INFO 21072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-11 10:21:34.461  INFO 21072 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-02-11 10:21:34.846  INFO 21072 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-11 10:21:34.892  INFO 21072 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-02-11 10:21:35.019  INFO 21072 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-02-11 10:21:35.043 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@1b52699c
+2024-02-11 10:21:35.043 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -&gt; org.hibernate.type.BooleanType@1b52699c
+2024-02-11 10:21:35.044 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -&gt; org.hibernate.type.BooleanType@1b52699c
+2024-02-11 10:21:35.044 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -&gt; org.hibernate.type.NumericBooleanType@7e5efcab
+2024-02-11 10:21:35.044 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -&gt; org.hibernate.type.TrueFalseType@3db65c0d
+2024-02-11 10:21:35.045 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -&gt; org.hibernate.type.YesNoType@11a3a45f
+2024-02-11 10:21:35.045 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@7f27f59b
+2024-02-11 10:21:35.045 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -&gt; org.hibernate.type.ByteType@7f27f59b
+2024-02-11 10:21:35.045 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -&gt; org.hibernate.type.ByteType@7f27f59b
+2024-02-11 10:21:35.046 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -&gt; org.hibernate.type.CharacterType@5b1e88f
+2024-02-11 10:21:35.046 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -&gt; org.hibernate.type.CharacterType@5b1e88f
+2024-02-11 10:21:35.046 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -&gt; org.hibernate.type.CharacterType@5b1e88f
+2024-02-11 10:21:35.047 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@5ec88f9e
+2024-02-11 10:21:35.047 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -&gt; org.hibernate.type.ShortType@5ec88f9e
+2024-02-11 10:21:35.047 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -&gt; org.hibernate.type.ShortType@5ec88f9e
+2024-02-11 10:21:35.048 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -&gt; org.hibernate.type.IntegerType@7a31ca20
+2024-02-11 10:21:35.048 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -&gt; org.hibernate.type.IntegerType@7a31ca20
+2024-02-11 10:21:35.048 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -&gt; org.hibernate.type.IntegerType@7a31ca20
+2024-02-11 10:21:35.049 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@46394f65
+2024-02-11 10:21:35.049 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -&gt; org.hibernate.type.LongType@46394f65
+2024-02-11 10:21:35.049 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -&gt; org.hibernate.type.LongType@46394f65
+2024-02-11 10:21:35.050 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@391515c7
+2024-02-11 10:21:35.050 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -&gt; org.hibernate.type.FloatType@391515c7
+2024-02-11 10:21:35.051 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -&gt; org.hibernate.type.FloatType@391515c7
+2024-02-11 10:21:35.052 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@b5aa65b
+2024-02-11 10:21:35.052 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -&gt; org.hibernate.type.DoubleType@b5aa65b
+2024-02-11 10:21:35.052 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -&gt; org.hibernate.type.DoubleType@b5aa65b
+2024-02-11 10:21:35.053 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -&gt; org.hibernate.type.BigDecimalType@21f7e537
+2024-02-11 10:21:35.053 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -&gt; org.hibernate.type.BigDecimalType@21f7e537
+2024-02-11 10:21:35.054 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -&gt; org.hibernate.type.BigIntegerType@3af2f846
+2024-02-11 10:21:35.054 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -&gt; org.hibernate.type.BigIntegerType@3af2f846
+2024-02-11 10:21:35.055 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -&gt; org.hibernate.type.StringType@284bdeed
+2024-02-11 10:21:35.056 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -&gt; org.hibernate.type.StringType@284bdeed
+2024-02-11 10:21:35.056 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -&gt; org.hibernate.type.StringNVarcharType@320be73
+2024-02-11 10:21:35.056 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -&gt; org.hibernate.type.CharacterNCharType@4c38cd16
+2024-02-11 10:21:35.057 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -&gt; org.hibernate.type.UrlType@28fc1132
+2024-02-11 10:21:35.057 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -&gt; org.hibernate.type.UrlType@28fc1132
+2024-02-11 10:21:35.057 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -&gt; org.hibernate.type.DurationType@66f5b8fe
+2024-02-11 10:21:35.057 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -&gt; org.hibernate.type.DurationType@66f5b8fe
+2024-02-11 10:21:35.058 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -&gt; org.hibernate.type.InstantType@6986f93e
+2024-02-11 10:21:35.058 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -&gt; org.hibernate.type.InstantType@6986f93e
+2024-02-11 10:21:35.059 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@353e6389
+2024-02-11 10:21:35.059 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -&gt; org.hibernate.type.LocalDateTimeType@353e6389
+2024-02-11 10:21:35.060 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -&gt; org.hibernate.type.LocalDateType@68631b1d
+2024-02-11 10:21:35.060 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -&gt; org.hibernate.type.LocalDateType@68631b1d
+2024-02-11 10:21:35.060 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -&gt; org.hibernate.type.LocalTimeType@4d354a3e
+2024-02-11 10:21:35.060 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -&gt; org.hibernate.type.LocalTimeType@4d354a3e
+2024-02-11 10:21:35.061 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@2c2c3947
+2024-02-11 10:21:35.061 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -&gt; org.hibernate.type.OffsetDateTimeType@2c2c3947
+2024-02-11 10:21:35.062 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -&gt; org.hibernate.type.OffsetTimeType@73f6e07
+2024-02-11 10:21:35.062 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -&gt; org.hibernate.type.OffsetTimeType@73f6e07
+2024-02-11 10:21:35.062 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@5b1c32e4
+2024-02-11 10:21:35.063 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -&gt; org.hibernate.type.ZonedDateTimeType@5b1c32e4
+2024-02-11 10:21:35.063 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -&gt; org.hibernate.type.DateType@67328bcb
+2024-02-11 10:21:35.063 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -&gt; org.hibernate.type.DateType@67328bcb
+2024-02-11 10:21:35.064 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -&gt; org.hibernate.type.TimeType@7e49ded
+2024-02-11 10:21:35.064 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -&gt; org.hibernate.type.TimeType@7e49ded
+2024-02-11 10:21:35.065 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -&gt; org.hibernate.type.TimestampType@52a7928a
+2024-02-11 10:21:35.065 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -&gt; org.hibernate.type.TimestampType@52a7928a
+2024-02-11 10:21:35.065 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -&gt; org.hibernate.type.TimestampType@52a7928a
+2024-02-11 10:21:35.066 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -&gt; org.hibernate.type.DbTimestampType@29d25e65
+2024-02-11 10:21:35.067 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -&gt; org.hibernate.type.CalendarType@6aa7e176
+2024-02-11 10:21:35.067 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -&gt; org.hibernate.type.CalendarType@6aa7e176
+2024-02-11 10:21:35.067 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -&gt; org.hibernate.type.CalendarType@6aa7e176
+2024-02-11 10:21:35.067 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -&gt; org.hibernate.type.CalendarDateType@1118d539
+2024-02-11 10:21:35.068 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -&gt; org.hibernate.type.CalendarTimeType@57186526
+2024-02-11 10:21:35.069 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -&gt; org.hibernate.type.LocaleType@257f30f7
+2024-02-11 10:21:35.069 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -&gt; org.hibernate.type.LocaleType@257f30f7
+2024-02-11 10:21:35.069 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -&gt; org.hibernate.type.CurrencyType@615efd1c
+2024-02-11 10:21:35.069 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -&gt; org.hibernate.type.CurrencyType@615efd1c
+2024-02-11 10:21:35.070 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -&gt; org.hibernate.type.TimeZoneType@48cd319d
+2024-02-11 10:21:35.070 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -&gt; org.hibernate.type.TimeZoneType@48cd319d
+2024-02-11 10:21:35.070 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -&gt; org.hibernate.type.ClassType@33ec2c0c
+2024-02-11 10:21:35.070 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -&gt; org.hibernate.type.ClassType@33ec2c0c
+2024-02-11 10:21:35.071 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -&gt; org.hibernate.type.UUIDBinaryType@443a06ad
+2024-02-11 10:21:35.071 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.UUIDBinaryType@443a06ad
+2024-02-11 10:21:35.071 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -&gt; org.hibernate.type.UUIDCharType@1fb2eec
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -&gt; org.hibernate.type.BinaryType@65da01f4
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -&gt; org.hibernate.type.BinaryType@65da01f4
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -&gt; org.hibernate.type.BinaryType@65da01f4
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -&gt; org.hibernate.type.WrapperBinaryType@2ca3d826
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -&gt; org.hibernate.type.WrapperBinaryType@2ca3d826
+2024-02-11 10:21:35.072 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -&gt; org.hibernate.type.WrapperBinaryType@2ca3d826
+2024-02-11 10:21:35.073 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -&gt; org.hibernate.type.RowVersionType@7ccd611e
+2024-02-11 10:21:35.073 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -&gt; org.hibernate.type.ImageType@640d604
+2024-02-11 10:21:35.074 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -&gt; org.hibernate.type.CharArrayType@7aa01bd9
+2024-02-11 10:21:35.074 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -&gt; org.hibernate.type.CharArrayType@7aa01bd9
+2024-02-11 10:21:35.074 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -&gt; org.hibernate.type.CharArrayType@7aa01bd9
+2024-02-11 10:21:35.074 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -&gt; org.hibernate.type.CharacterArrayType@5a9840f3
+2024-02-11 10:21:35.074 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -&gt; org.hibernate.type.CharacterArrayType@5a9840f3
+2024-02-11 10:21:35.075 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -&gt; org.hibernate.type.CharacterArrayType@5a9840f3
+2024-02-11 10:21:35.075 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -&gt; org.hibernate.type.TextType@34a20f16
+2024-02-11 10:21:35.075 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -&gt; org.hibernate.type.NTextType@38ac8968
+2024-02-11 10:21:35.076 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -&gt; org.hibernate.type.BlobType@691567ea
+2024-02-11 10:21:35.076 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -&gt; org.hibernate.type.BlobType@691567ea
+2024-02-11 10:21:35.077 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -&gt; org.hibernate.type.MaterializedBlobType@28be7fec
+2024-02-11 10:21:35.078 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -&gt; org.hibernate.type.ClobType@50ec4bfc
+2024-02-11 10:21:35.078 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -&gt; org.hibernate.type.ClobType@50ec4bfc
+2024-02-11 10:21:35.079 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -&gt; org.hibernate.type.NClobType@578a5ce8
+2024-02-11 10:21:35.079 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -&gt; org.hibernate.type.NClobType@578a5ce8
+2024-02-11 10:21:35.079 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -&gt; org.hibernate.type.MaterializedClobType@3815146b
+2024-02-11 10:21:35.080 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -&gt; org.hibernate.type.MaterializedNClobType@61359e87
+2024-02-11 10:21:35.081 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -&gt; org.hibernate.type.SerializableType@14b4340c
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -&gt; org.hibernate.type.ObjectType@74f280bd
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -&gt; org.hibernate.type.ObjectType@74f280bd
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -&gt; org.hibernate.type.AdaptedImmutableType@8641b7d
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -&gt; org.hibernate.type.AdaptedImmutableType@37c7766e
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -&gt; org.hibernate.type.AdaptedImmutableType@3fb450d7
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -&gt; org.hibernate.type.AdaptedImmutableType@4b7ed03e
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -&gt; org.hibernate.type.AdaptedImmutableType@636985df
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -&gt; org.hibernate.type.AdaptedImmutableType@6f91fbda
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -&gt; org.hibernate.type.AdaptedImmutableType@723e3c17
+2024-02-11 10:21:35.084 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -&gt; org.hibernate.type.AdaptedImmutableType@4ffced4e
+2024-02-11 10:21:35.116  INFO 21072 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-11 10:21:35.123  WARN 21072 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2024-02-11 10:21:35.128  WARN 21072 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at com.zaxxer.hikari.util.DriverDataSource.&lt;init&gt;(DriverDataSource.java:110) ~[HikariCP-4.0.3.jar:na]
@@ -517,22 +518,23 @@ java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jd
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2023-08-31 19:42:10.213  INFO 11544 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2023-08-31 19:42:10.256 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration pg-uuid -&gt; org.hibernate.type.PostgresUUIDType@2df3545d
-2023-08-31 19:42:10.257 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.PostgresUUIDType@2df3545d
-2023-08-31 19:42:10.257 DEBUG 11544 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@1ec88aa1
-2023-08-31 19:42:10.261 DEBUG 11544 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@44aa91e2] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@50dc49e1]
-2023-08-31 19:42:10.573 DEBUG 11544 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@44aa91e2] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@2bdcfcf]
-2023-08-31 19:42:11.055  INFO 11544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-08-31 19:42:11.056  WARN 11544 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2023-08-31 19:42:11.058 TRACE 11544 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@2bdcfcf] for TypeConfiguration
-2023-08-31 19:42:11.058 DEBUG 11544 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@651caa2e] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@2bdcfcf]
-2023-08-31 19:42:11.061 ERROR 11544 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2023-08-31 19:42:11.062  WARN 11544 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2023-08-31 19:42:11.070  INFO 11544 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2024-02-11 10:21:35.142  INFO 21072 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-02-11 10:21:35.157 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration pg-uuid -&gt; org.hibernate.type.PostgresUUIDType@68bd8ca7
+2024-02-11 10:21:35.158 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -&gt; org.hibernate.type.PostgresUUIDType@68bd8ca7
+2024-02-11 10:21:35.158 DEBUG 21072 --- [    Test worker] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@443a06ad
+2024-02-11 10:21:35.159 DEBUG 21072 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@9a9aa68] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@3a3883c4]
+2024-02-11 10:21:35.320 DEBUG 21072 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@9a9aa68] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@49631cfb]
+2024-02-11 10:21:35.552 DEBUG 21072 --- [    Test worker] org.hibernate.SQL                        : drop table if exists productos cascade
+2024-02-11 10:21:35.553  INFO 21072 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-11 10:21:35.553  WARN 21072 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2024-02-11 10:21:35.554 TRACE 21072 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@49631cfb] for TypeConfiguration
+2024-02-11 10:21:35.554 DEBUG 21072 --- [    Test worker] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@45c408a4] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@49631cfb]
+2024-02-11 10:21:35.555 ERROR 21072 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2024-02-11 10:21:35.556  WARN 21072 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2024-02-11 10:21:35.561  INFO 21072 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2023-08-31 19:42:11.099 ERROR 11544 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2024-02-11 10:21:35.578 ERROR 21072 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -653,14 +655,15 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:44) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.&lt;init&gt;(DatabaseInformationImpl.java:60) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:183) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:68) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:77) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:53) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:246) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:335) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
@@ -670,7 +673,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.29.jar:5.3.29]
 	... 105 common frames omitted
 
-2023-08-31 19:42:11.110 ERROR 11544 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@11ee02f8] to prepare test instance [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests@11c999da]
+2024-02-11 10:21:35.583 ERROR 21072 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@52b56a3e] to prepare test instance [com.pawsitivevibes.EcommercePawsitiveVibes.EcommercePawsitiveVibesApplicationTests@5e2975ca]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -794,14 +797,15 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:44) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.&lt;init&gt;(DatabaseInformationImpl.java:60) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:183) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:68) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:204) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.jdbcStatement(GenerationTargetToDatabase.java:77) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:53) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:387) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:371) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:246) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:156) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:128) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:114) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:157) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:335) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
@@ -822,7 +826,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.2.1</a> at 31 ago. 2023 19:42:11</p>
+<a href="http://www.gradle.org">Gradle 8.2.1</a> at 11 feb. 2024 10:21:35</p>
 </div>
 </div>
 </body>
